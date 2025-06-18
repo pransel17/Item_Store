@@ -1,2 +1,2 @@
 # Product-Store
-Practice project 
+Full stack | Practice project 
