@@ -1,0 +1,29 @@
+{
+  "name": "product-store",
+  "version": "1.0.0",
+  "description": "Practice project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./Backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pransel17/Product-Store.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pransel17/Product-Store/issues"
+  },
+  "homepage": "https://github.com/pransel17/Product-Store#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
