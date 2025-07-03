@@ -8,7 +8,8 @@ export const useProductStore = create((set) => ({  //  doing (set) is required w
 
     products: [],  // the actual data oki
     setProducts: (products) => set({ products }),  /// function to update the data
-    createProduct: async(newProduct) =>{
+
+    createProduct: async(newProduct) =>{ // TO CREATE
         if(!newProduct.name || !newProduct.image || !newProduct.price){
             return {success: false, message: "Please fill in all fields"}
         }
@@ -23,10 +24,24 @@ export const useProductStore = create((set) => ({  //  doing (set) is required w
         set((state) => ({products:[...state.products, data.data]}))
         return {success: true, message: "Product created succesfully"}
     },
-    fetchProducts: async () => {
+
+    fetchProducts: async () => {    // FOR getting DATA
         const res = await fetch("/api/products");
         const data = await res.json();
         set({ products: data.data }); 
+    },
+
+    deleteProducts: async (pid) =>{ // FOR DELETING 
+        const res = await fetch(`/api/products/${pid}`, {
+            method: "DELETE",
+        })
+        const data = await res.json();
+        if (!data.success) return {success: false, message: data.message};
+        set(state => ({products: state.products.filter(products => products._id !== pid)})); // for matic change in ui
+        return {success: true, message: "Product deleted succesfully"}
+
+
     }
+
 }))
 

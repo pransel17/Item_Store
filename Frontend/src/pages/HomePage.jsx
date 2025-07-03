@@ -37,21 +37,27 @@ const HomePage = () => {
           spacing={10}
           w={'full'}
         >
-          {products.map((products)=>{
+          {products.map((products)=>(
             <ProductCard key={products._id} products={products} />
-          })}
+          ))}
 
         </SimpleGrid>
 
 
-        <Text fontSize={'xl'} textAlign={'center'} fontWeight={'bold'} color={'gray.500'}>
-          No products found 😔
-          <Link to={"/create"}> 
-            <Text as={'span'} color={'blue.500'} _hover={{ textDecoration: 'underline'}}>
-              Create a Product
-            </Text>          
-          </Link>
-        </Text>
+      
+        {products.length === 0 &&(
+          <Text fontSize={'xl'} textAlign={'center'} fontWeight={'bold'} color={'gray.500'}>
+            No products found 😔
+            <Link to={"/create"}> 
+              <Text as={'span'} color={'blue.500'} _hover={{ textDecoration: 'underline'}}>
+                Create a Product
+              </Text>          
+            </Link>
+          </Text>
+        )}
+
+
+
 
 
       </VStack>

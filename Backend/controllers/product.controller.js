@@ -29,10 +29,10 @@ export const createProduct = async (req, res) => {
   const newProduct = new Product(product)
   try{
     await newProduct.save();
-    res.status(201).json({sucess: true, data: newProduct});
+    res.status(201).json({success: true, data: newProduct});
   } catch(error){
     console.error("Error in Create product: ", error.message)
-    res.status(500).json({sucess: false, message: "Server Error"});
+    res.status(500).json({success: false, message: "Server Error"});
   }   
 }
 
@@ -43,7 +43,7 @@ export const updateProduct =  async (req,res) =>{
     const product = req.body;
   
     if (!mongoose.Types.ObjectId.isValid(id)){
-      return res.status(404).json({ sucess: false, message: "Invalid Product Id"});
+      return res.status(404).json({ success: false, message: "Invalid Product Id"});
     }
                 
     try{
@@ -61,7 +61,7 @@ export const deleteProduct = async (req,res) => {
 
       
     if (!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({ sucess: false, message: "Invalid Product Id"});
+        return res.status(404).json({ success: false, message: "Invalid Product Id"});
       }
            
   
