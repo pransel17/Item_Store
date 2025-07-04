@@ -3,6 +3,8 @@
 
 import {create} from "zustand"
 
+
+
 export const useProductStore = create((set) => ({  //  doing (set) is required when you're creating a Zustand store
 
 
@@ -39,6 +41,22 @@ export const useProductStore = create((set) => ({  //  doing (set) is required w
         if (!data.success) return {success: false, message: data.message};
         set(state => ({products: state.products.filter(products => products._id !== pid)})); // for matic change in ui w/o refeshing immediately
         return {success: true, message: "Product deleted succesfully"}
+
+
+    },
+
+    updateProduct: async (pid, updatedProduct) => { 
+        const res = await fetch(`/api/products/${pid}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedProduct),
+        })
+        const data = await res.json();
+        if (!data.success) return {success: false, message: data.message};
+        set(state => ({products: state.products.map(products => products._id === pid ? data.data : products )})); // for matic change in ui w/o refeshing immediately
+        return { success: true, message: "Product updated successfully" };
 
 
     }

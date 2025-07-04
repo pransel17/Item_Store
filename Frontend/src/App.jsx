@@ -9,7 +9,7 @@ function App() {
   
   return (
 
-    <Box minH={"100vh"} bg={useColorModeValue("gray.100", "gray.900")}> 
+    <Box minH={"100vh"} bg={useColorModeValue("gray.100", "blackAlpha.600")}> 
 
       <Navbar />
       <Routes>          {/* declaration of connecting other pages thrrough da <link> */}

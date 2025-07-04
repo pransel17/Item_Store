@@ -4,7 +4,9 @@
   "description": "Practice project",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./Backend/server.js"
+    "dev": "cross-env NODE_ENV=development nodemon ./Backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "cross-env NODE_ENV=production node Backend/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,10 +22,11 @@
   "homepage": "https://github.com/pransel17/Product-Store#readme",
   "dependencies": {
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
+    "express": "^4.21.2",
     "mongoose": "^8.16.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^3.1.10"
   }
 }

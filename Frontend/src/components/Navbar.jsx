@@ -32,7 +32,7 @@ const Navbar = () => {
             textAlign={"center"}
           >
 
-            <Link to={"/"} > Product Store 🛒 </Link>
+            <Link to={"/"} > Items Store 🛒 </Link>
 
           </Text>
 
