@@ -1,4 +1,4 @@
-import { Box, Heading, Image, Text, HStack, IconButton, useToast , useColorModeValue   } from '@chakra-ui/react';
+import { Box, Heading, Image, Text, HStack, IconButton, useToast , useColorModeValue, Modal, ModalOverlay, ModelContent, ModalHeader } from '@chakra-ui/react';
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'; 
 import {useProductStore} from '../store/product';
 
@@ -8,6 +8,9 @@ const ProductCard = ({products}) => {
   const bg = useColorModeValue("white", "gray.800");
   const {deleteProducts} = useProductStore()
   const toast = useToast()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+
   const handleDeleteProducts = async(pid) => {
     const {success, message} = await deleteProducts(pid)
     if (!success){
@@ -56,6 +59,25 @@ const ProductCard = ({products}) => {
           <IconButton icon={<DeleteIcon/>} onClick={() => handleDeleteProducts(products._id)} colorScheme='red' />
         </HStack>
       </Box>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay/> {/* yung dark bg effect */}
+          <ModelContent>
+            <ModalHeader> </ModalHeader>
+            <ModelCloseButton> </ModelCloseButton>
+
+
+          </ModelContent>
+
+
+
+      </Modal>
+
+
+
+
+
+
     </Box>
   )
 }

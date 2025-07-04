@@ -37,7 +37,7 @@ export const useProductStore = create((set) => ({  //  doing (set) is required w
         })
         const data = await res.json();
         if (!data.success) return {success: false, message: data.message};
-        set(state => ({products: state.products.filter(products => products._id !== pid)})); // for matic change in ui
+        set(state => ({products: state.products.filter(products => products._id !== pid)})); // for matic change in ui w/o refeshing immediately
         return {success: true, message: "Product deleted succesfully"}
 
 
